@@ -61,6 +61,7 @@ const OpenLayersMap: React.FC = () => {
       view: new View({
         center: [0, 0],
         zoom: 2,
+        minZoom: 2
       }),
     });
 
