@@ -15,7 +15,6 @@ import {
 import "ol/ol.css";
 
 let key = process.env.REACT_APP_API_KEY;
-//let googleKey = "AIzaSyAfwLdxM7Vh_v39TYXR60mNDhuslVYds0Y";
 
 const OpenLayersMap: React.FC = () => {
   const [selectedTile, setSelectedTile] = useState<string>("osmStandardView");
