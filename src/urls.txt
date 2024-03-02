@@ -1,0 +1,9 @@
+https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places_simple.geojson
+
+https://openlayers.org/data/vector/populated-places.json
+
+https://openlayers.org/data/vector/ocean.json
+
+https://openlayers.org/data/vector/us-states.json
+
+https://openlayers.org/data/vector/ecoregions.json
