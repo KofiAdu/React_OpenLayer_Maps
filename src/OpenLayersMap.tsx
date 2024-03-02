@@ -72,7 +72,7 @@ const OpenLayersMap: React.FC = () => {
   useEffect(() => {
     const vectorSource = new VectorSource({
       format: new GeoJSON(),
-      url: "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places_simple.geojson",
+      url: "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson",
     });
 
     const vectorLayer = new VectorLayer({
@@ -85,7 +85,7 @@ const OpenLayersMap: React.FC = () => {
       layers: [...Object.values(tileLayers), vectorLayer],
       view: new View({
         center: [0, 0],
-        zoom: 3,
+        zoom: 2.5,
         minZoom: 2,
       }),
      // interactions: [selectInteraction, modifyInteraction],
