@@ -19,9 +19,12 @@ import {
   RadioGroup,
   FormControl,
   FormControlLabel,
-  Popover,
   Typography,
+  Drawer,
+  IconButton,
 } from "@mui/material";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import MenuIcon from "@mui/icons-material/Menu";
 import "ol/ol.css";
 
 let key = process.env.REACT_APP_API_KEY;
@@ -36,6 +39,7 @@ const OpenLayersMap: React.FC = () => {
     y: 0,
   });
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tileLayers, setTileLayers] = useState<{ [key: string]: TileLayer }>({
     osmStandardView: new TileLayer({
       source: new OSM(),
@@ -80,6 +84,10 @@ const OpenLayersMap: React.FC = () => {
       title: "osmStreetView",
     }),
   });
+
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   useEffect(() => {
     const vectorSource = new VectorSource({
@@ -224,73 +232,102 @@ const OpenLayersMap: React.FC = () => {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "95vh" }}>
-      <FormControl>
-        <RadioGroup
-          row
-          name="radio-buttons-group"
-          value={selectedTile}
-          onChange={changeTile}
-        >
-          {Object.values(tileLayers).map((layer) => (
-            <FormControlLabel
-              key={layer.get("title")}
-              value={layer.get("title")}
-              control={<Radio />}
-              label={getCustomLabel(layer.get("title"))}
-            />
-          ))}
-        </RadioGroup>
-      </FormControl>
-      <div id="map" style={{ width: "100%", height: "calc(100% - 50px)" }} />
-      {open && (
-        <div
-          className="popover"
+      <Drawer
+        variant="persistent"
+        anchor="left"
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      >
+        <div>
+          <IconButton onClick={handleSidebarToggle}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <FormControl style={{ padding: "20px" }}>
+          <RadioGroup
+            name="radio-buttons-group"
+            value={selectedTile}
+            onChange={changeTile}
+          >
+            {Object.values(tileLayers).map((layer) => (
+              <FormControlLabel
+                key={layer.get("title")}
+                value={layer.get("title")}
+                control={<Radio />}
+                label={getCustomLabel(layer.get("title"))}
+              />
+            ))}
+          </RadioGroup>
+        </FormControl>
+      </Drawer>
+      <div style={{ position: "relative", width: "100%", height: "100%", }}>
+        <IconButton
           style={{
             position: "absolute",
-            top: calculatePopoverPosition(
-              mousePosition.y,
-              window.innerHeight,
-              150
-            ),
-            left: calculatePopoverPosition(
-              mousePosition.x,
-              window.innerWidth,
-              300
-            ),
-            backgroundColor: hoveredFeatureProperties
-              ? hoveredFeatureProperties.COLOR
-              : "#fff",
-            border: "1px solid #ccc",
-            color: "white",
-            borderRadius: "4px",
-            padding: "10px",
-            boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+            left: sidebarOpen ? 240 : 10,
+            top: 10,
             zIndex: 999,
-            pointerEvents: "none",
-            overflow: "hidden",
+            marginTop: "4%",
+            marginLeft: "-0.35%", 
+            backgroundColor: 'rgba(33, 66, 110, 0.5)'
           }}
+          onClick={handleSidebarToggle}
         >
-          <Typography>
-            {hoveredFeatureProperties && (
-              <ul>
-                <li>
-                  <strong>BIOME NAME:</strong>{" "}
-                  {hoveredFeatureProperties.BIOME_NAME}
-                </li>
-                <li>
-                  <strong>ECO NAME:</strong> {hoveredFeatureProperties.ECO_NAME}
-                </li>
-                <li>
-                  <strong>NNH NAME:</strong> {hoveredFeatureProperties.NNH_NAME}
-                </li>
-                <li>
-                  <strong>REALM:</strong> {hoveredFeatureProperties.REALM}
-                </li>
-              </ul>
-            )}
-          </Typography>
-        </div>
-      )}
+          {sidebarOpen ? <ChevronLeftIcon /> : <MenuIcon />}
+        </IconButton>
+        <div id="map" style={{ width: "100%", height: "100%" }} />
+        {open && (
+          <div
+            className="popover"
+            style={{
+              position: "absolute",
+              top: calculatePopoverPosition(
+                mousePosition.y,
+                window.innerHeight,
+                150
+              ),
+              left: calculatePopoverPosition(
+                mousePosition.x,
+                window.innerWidth,
+                300
+              ),
+              backgroundColor: hoveredFeatureProperties
+                ? hoveredFeatureProperties.COLOR
+                : "#fff",
+              border: "1px solid #ccc",
+              color: "white",
+              borderRadius: "4px",
+              padding: "10px",
+              boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+              zIndex: 999,
+              pointerEvents: "none",
+              overflow: "hidden",
+            }}
+          >
+            <Typography>
+              {hoveredFeatureProperties && (
+                <ul>
+                  <li>
+                    <strong>BIOME NAME:</strong>{" "}
+                    {hoveredFeatureProperties.BIOME_NAME}
+                  </li>
+                  <li>
+                    <strong>ECO NAME:</strong>{" "}
+                    {hoveredFeatureProperties.ECO_NAME}
+                  </li>
+                  <li>
+                    <strong>NNH NAME:</strong>{" "}
+                    {hoveredFeatureProperties.NNH_NAME}
+                  </li>
+                  <li>
+                    <strong>REALM:</strong> {hoveredFeatureProperties.REALM}
+                  </li>
+                </ul>
+              )}
+            </Typography>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
