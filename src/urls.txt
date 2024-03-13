@@ -1,9 +1,24 @@
+#Vector Layers
 https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places_simple.geojson
-
 https://openlayers.org/data/vector/populated-places.json
-
 https://openlayers.org/data/vector/ocean.json
-
 https://openlayers.org/data/vector/us-states.json
-
 https://openlayers.org/data/vector/ecoregions.json
+
+#Tile Layers
+OpenTopoMap: https://tile.opentopomap.org/{z}/{x}/{y}.png
+OpenStreetMap: http://tile.openstreetmap.org/{z}/{x}/{y}.png
+Google Hybrid: https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}
+Google Satellite: https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
+Google Road: https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}
+Bing Aerial: http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=1
+
+Google Map tiles
+
+h = roads only
+m = standard roadmap
+p = terrain
+r = somehow altered roadmap
+s = satellite only
+t = terrain only
+y = hybrid
