@@ -1,0 +1,15 @@
+{
+    "created": "2020-01-22T10:33:30.139800",
+    "description": "GeoJSON file. This is a dataset of possible mining areas in Myanmar  that was digitized from a systematic search of high-resolution imagery available on Google Earth and Bing Aerial.   Digitizing took place in late 2015 and early 2016 with the most recent imagery available (usually 2014 or 2015).   A field in the attribute table called \"Certainty\" indicates the how confident we were that the digitized polygon is a mine, rather than some other type of ground disturbance.",
+    "format": "GeoJSON",
+    "download_url": "https://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode:mining_areas&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature",
+    "id": "d26b9e1e-82cf-43fd-a0da-187c97650427",
+    "last_modified": "2016-08-31T10:16:00",
+    "metadata_modified": "2024-03-17T19:30:57.448832",
+    "microdata": false,
+    "dataset_id": "1fc1d277-1b19-4b39-9886-d5c97db78b56",
+    "resource_type": "api",
+    "name": "Mining Areas geojson",
+    "mimetype": null,
+    "size": "0.0B"
+}

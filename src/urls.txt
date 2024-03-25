@@ -5,6 +5,9 @@ https://openlayers.org/data/vector/ocean.json
 https://openlayers.org/data/vector/us-states.json
 https://openlayers.org/data/vector/ecoregions.json
 
+#mining_areas (vector layers)
+https://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode:mining_areas&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature
+
 #Tile Layers
 OpenTopoMap: https://tile.opentopomap.org/{z}/{x}/{y}.png
 OpenStreetMap: http://tile.openstreetmap.org/{z}/{x}/{y}.png

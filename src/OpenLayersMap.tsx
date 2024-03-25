@@ -99,9 +99,7 @@ const OpenLayersMap: React.FC = () => {
     const vectorLayer = new VectorLayer({
       source: vectorSource,
     });
-    */
-
-    /*
+    
     const vectorLayer = new VectorLayer({
       source: vectorSource,
       style: (feature: any) => {
@@ -176,8 +174,8 @@ const OpenLayersMap: React.FC = () => {
       );
 
       if (feature) {
-        //console.log(feature.getProperties())
         setHoveredFeatureProperties(feature.getProperties());
+        console.log(hoveredFeatureProperties);
         setAnchorEl(event.map.getTargetElement());
         setMousePosition({ x: event.pixel[0], y: event.pixel[1] });
       } else {
@@ -260,7 +258,7 @@ const OpenLayersMap: React.FC = () => {
           </RadioGroup>
         </FormControl>
       </Drawer>
-      <div style={{ position: "relative", width: "100%", height: "100%", }}>
+      <div style={{ position: "relative", width: "100%", height: "100%" }}>
         <IconButton
           style={{
             position: "absolute",
@@ -268,14 +266,14 @@ const OpenLayersMap: React.FC = () => {
             top: 10,
             zIndex: 999,
             marginTop: "4%",
-            marginLeft: "-0.35%", 
-            backgroundColor: 'rgba(33, 66, 110, 0.5)'
+            marginLeft: "-0.35%",
+            backgroundColor: "rgba(33, 66, 110, 0.5)",
           }}
           onClick={handleSidebarToggle}
         >
           {sidebarOpen ? <ChevronLeftIcon /> : <MenuIcon />}
         </IconButton>
-        <div id="map" style={{ width: "100%", height: "100%" }} />
+        <div id="map" style={{ width: "100%", height: "95%" }} />
         {open && (
           <div
             className="popover"
